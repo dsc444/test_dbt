@@ -1,6 +1,14 @@
 
 version: 2
 
+sources:
+  - name: streamlit_raw             # The logical name used in {{ source('streamlit_raw', ...
+    database: STREAMLIT_DB
+    schema: PUBLIC
+    tables:
+      - name: SHOP_DATA             # The physical table name
+        description: Raw sales data used for modeling.
+
 models:
     - name: my_first_dbt_model
       description: "A starter dbt model"

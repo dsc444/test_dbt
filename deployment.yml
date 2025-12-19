@@ -1,0 +1,7 @@
+jobs:
+  - name: daily_sync
+    steps:
+      - name: run models
+        command: dbt run
+      - name: run tests    # <--- ADD THIS
+        command: dbt test   # <--- AND THIS

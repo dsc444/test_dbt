@@ -1,8 +1,0 @@
-jobs:
-  - name: daily_production_sync
-    targetName: prod
-    schedule: 
-      type: integrated
-    steps:
-      - name: Build and Test Locations
-        command: dbt build --select +locations

@@ -1,0 +1,7 @@
+version: 2
+sources:
+  - name: fivetran_sheets
+    database: FIVETRAN2  # Your Snowflake DB where Fivetran lands data
+    schema: sources
+    tables:
+      - name: locations

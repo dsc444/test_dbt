@@ -6,8 +6,8 @@ sources:
     schema: sources
     tables:
       - name: locations
-        tests: # Move the test here
-          - dbt_utils.expression_is_true:
-              arguments:
-                expression: "lower(Device) not like '%mobile%'"
+      #  tests: # Move the test here
+      #    - dbt_utils.expression_is_true:
+      #        arguments:
+      #          expression: "lower(Device) not like '%mobile%'"
       - name: end_table

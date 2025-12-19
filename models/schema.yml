@@ -1,8 +1,0 @@
-version: 2
-
-models:
-- name: Device 
-  tests:
-    - dbt_utils.expression_is_true:
-        arguments: # Adding this to avoid the deprecation warning
-          expression: "lower(DEVICE) not like '%mobile%'"

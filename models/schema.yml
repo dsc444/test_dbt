@@ -1,9 +1,8 @@
 version: 2
 
 models:
-  - name: locations
-    columns:
-      - name: your_column_name  # Ensure this matches the column in your SQL
-        tests:
-          - dbt_utils.expression_is_true:
-              expression: "lower(your_column_name) not like '%mobile%'"
+- name: Device 
+  tests:
+    - dbt_utils.expression_is_true:
+        arguments: # Adding this to avoid the deprecation warning
+          expression: "lower(DEVICE) not like '%mobile%'"

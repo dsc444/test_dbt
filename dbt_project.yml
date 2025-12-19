@@ -18,3 +18,5 @@ clean-targets:
 models:
   ad_data:
     +materialized: table  # Note the colon instead of the equals sign
+    +database: FIVETRAN2  # Forces the database
+    +schema: sources

@@ -2,28 +2,27 @@
     materialized = 'table'
 )}}
 
-with locations as (
-
-    select * from {{locations}}
-
+with locations_source as (
+    -- Use source() for raw Fivetran data
+    select * from {{ source('fivetran_sheets', 'locations') }}
 ),
 
-end_table as (
-
-    select * from {{end_table}}
-
+-- Note: If 'end_table' is another file in your models folder, use ref()
+-- If it's another source, use source(). 
+-- I'll assume it's a source for now:
+end_table_source as (
+    select * from {{ source('fivetran_sheets', 'end_table') }}
 ),
 
 final as (
-
     select
-        e.AD_id as ad_id,
-        e.Device,
-        l.Sale_Amount,
-        l.Cost,
-        l.Clicks
-    from end_table as e
-    left join locations as l
+        l.AD_id as ad_id,
+        l.Device,
+        e.Sale_Amount,
+        e.Cost,
+        e.Clicks
+    from end_table_source as e
+    left join locations_source as l
         on e.AD_id = l.AD_id
 )
 

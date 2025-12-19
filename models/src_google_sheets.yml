@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: fivetran_sheets
+    database: FIVETRAN2
+    schema: sources
+    tables:
+      - name: locations
+        tests: # Move the test here
+          - dbt_utils.expression_is_true:
+              arguments:
+                expression: "lower(Device) not like '%mobile%'"
+      - name: end_table

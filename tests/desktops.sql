@@ -1,10 +1,5 @@
-with
-
-locations as (
-        select * from {{ref('locations')}}
-)
-
+-- dbt will run this and fail if any rows are returned
 select
-    your_column_name
-from {{ ref('locations') }}
-where your_column_name like '%desktops%'
+    Device
+from {{ source('fivetran_sheets', 'locations') }}
+where lower(Device) like '%desktops%'

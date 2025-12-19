@@ -1,7 +1,8 @@
 jobs:
-  - name: daily_sync
+  - name: daily_production_sync
+    targetName: prod
+    schedule: 
+      type: integrated
     steps:
-      - name: run models
-        command: dbt run
-      - name: run tests    # <--- ADD THIS
-        command: dbt test   # <--- AND THIS
+      - name: Build and Test Locations
+        command: dbt build --select +locations
